@@ -56,3 +56,28 @@ $bg-rgba: rgba(0, 0, 0, 0.5);
 // @sm-phone: ~"(max-width: 414px)";
 // @xsm-phone: ~"(max-width: 360px)";
 // @xxsm-phone: ~"(max-width: 320px)";
+
+// .btnStyle(@width) {
+//   display: inline-block;
+//   padding: 0.7rem 2.5rem;
+//   font-size: @font-p-s;
+//   border-radius: 10px;
+//   background: @logo-color;
+//   color: white;
+//   cursor: pointer;
+//   text-transform: capitalize;
+//   outline: none;
+//   border: 1px solid @logo-color;
+//   width: @width;
+// }
+
+// .flexProps(@justify) {
+//   display: flex;
+//   justify-content: @justify;
+// }
+
+// .imgProps() {
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center;
+// }
