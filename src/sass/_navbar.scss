@@ -6,6 +6,7 @@
   top: 0;
   left: 0;
   right: 0;
+  transition: all 0.5s ease;
 
   .Navbar {
     //  border: 1px solid red;
@@ -86,9 +87,9 @@
         }
       }
 
-      .active {
-        color: $green;
-      }
+      // .active {
+      //   color: $green;
+      // }
     }
   }
 }
@@ -98,21 +99,21 @@
 .scroll-color {
   //   background: rgba(0, 0, 0, 0.9);
   //   background: rgba(67, 92, 53, 0.9);
-  background: $white;
+  background: rgba(115, 195, 40, 0.8);
   transition: all 0.5s ease;
-  padding: 0.5rem 0;
+  //   padding: 0.5rem 0;
 
   .Navbar {
     .logo-wrapper {
       img {
-        width: 75px;
-        height: 75px;
+        width: 65px;
+        height: 65px;
       }
     }
     .links {
       a {
         font-size: 1.1rem;
-        color: $green;
+        //   color: $green;
         //   padding: 0.3rem 1rem;
       }
 
