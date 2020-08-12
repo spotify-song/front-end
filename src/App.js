@@ -1,9 +1,12 @@
 import React from "react";
+import MainApp from "./components/MainApp";
+import MarketingHomePage from "./components/MarketingPage/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <h2>App</h2>
+      <MarketingHomePage />
+      <MainApp />
     </div>
   );
 }
