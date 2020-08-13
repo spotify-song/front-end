@@ -87,8 +87,8 @@ const Content = () => {
                   <button>get started</button>
                 </div>
                 <span className="terms">
-                  <a href="">Term and conditions apply.</a>1 month free not
-                  avalible for users who have already tried Premium
+                  <a href="www.google.com">Term and conditions apply.</a>1 month
+                  free not avalible for users who have already tried Premium
                 </span>
               </div>
             </div>
@@ -143,8 +143,8 @@ const Content = () => {
                   <button>get started</button>
                 </div>
                 <span className="terms">
-                  <a href="">Term and conditions apply.</a>1 month free not
-                  avalible for users who have already tried Premium
+                  <a href="www.google.com">Term and conditions apply.</a>1 month
+                  free not avalible for users who have already tried Premium
                 </span>
               </div>
             </div>
@@ -199,8 +199,8 @@ const Content = () => {
                   <button>get started</button>
                 </div>
                 <span className="terms">
-                  <a href="">Term and conditions apply.</a>1 month free not
-                  avalible for users who have already tried Premium
+                  <a href="www.google.com">Term and conditions apply.</a>1 month
+                  free not avalible for users who have already tried Premium
                 </span>
               </div>
             </div>

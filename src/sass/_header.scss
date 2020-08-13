@@ -1,5 +1,4 @@
 .Header {
-  //   border: 1px solid red;
   height: 80vh;
   @include flex(center);
 
@@ -28,9 +27,7 @@
     color: $white;
     display: flex;
     flex-direction: column;
-    //  justify-content: center;
     align-items: center;
-    //  border: 1px solid red;
     text-align: center;
 
     @media (max-width: $tablet) {

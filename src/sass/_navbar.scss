@@ -13,7 +13,7 @@
     @include flex(space-between);
     align-items: center;
     padding: 1rem;
-    max-width: 60%;
+    max-width: $mx-width;
     margin: 0 auto;
 
     // without logo
@@ -21,7 +21,7 @@
     //  height: 7vh;
 
     @media (max-width: $tablet) {
-      max-width: 950px;
+      max-width: 1100px;
     }
     //  position: fixed;
     //  top: 0;
@@ -52,6 +52,10 @@
         margin-left: 1rem;
         font-size: 1.4rem;
         //   font-weight: 500;
+
+        @media (max-width: $phone) {
+          display: none;
+        }
       }
     }
 
