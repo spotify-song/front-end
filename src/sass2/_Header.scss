@@ -35,7 +35,7 @@
   //     rgba(3, 23, 54, 0) 350%
   //   );
 
-  background: url("../imgs/img1.jpg");
+  background: url("../imgs/img3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -82,7 +82,7 @@
       rgb(0, 0, 3) 0%,
       rgb(4, 16, 44) 0%,
       rgb(5, 12, 54) 26%,
-      rgba(3, 8, 54, 0) 350%
+      rgba(3, 8, 54, 0.1) 350%
     );
   }
   header {
@@ -111,10 +111,18 @@
       font-size: 1.1rem;
       background: rgb(17, 48, 224);
       background: rgb(13, 41, 196);
+      background: #04f;
 
       color: #f4f4f4;
       border: none;
       outline: none;
+      cursor: pointer;
+      transition: background 0.4s ease;
+
+      &:hover {
+        background: rgb(44, 43, 43);
+        background: rgb(39, 38, 38);
+      }
     }
   }
 }
