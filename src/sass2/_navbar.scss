@@ -18,6 +18,10 @@
     font-size: 1.6rem;
     font-family: "Roboto", sans-serif;
 
+    a {
+      color: #f4f4f4;
+    }
+
     span {
       font-size: 1.2rem;
       font-weight: 100;
@@ -31,9 +35,28 @@
     a {
       margin-right: 1.5rem;
       color: #f4f4f4;
+      transition: color 0.4s ease;
+
+      &:hover {
+        color: rgb(167, 165, 165);
+      }
 
       &:last-child {
         margin-right: 0;
+        //   border: 1px solid red;
+        padding: 0.5rem 1.3rem;
+        background: rgb(13, 41, 196);
+        background: #04f;
+        border-radius: 20px;
+        font-weight: lighter;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        transition: background 0.4s ease;
+
+        &:hover {
+          background: rgb(39, 38, 38);
+          color: #f4f4f4;
+        }
       }
     }
   }
