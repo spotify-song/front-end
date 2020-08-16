@@ -1,9 +1,16 @@
 import React from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import { useForm } from "react-hook-form";
 
 const FormModal = () => {
   const [open, setOpen] = React.useState(false);
+  const { register, handleSubmit, reset, errors } = useForm();
+
+  const onSubmit = (values) => {
+    setOpen(false);
+    reset();
+  };
   return (
     <div>
       <button className="button" onClick={() => setOpen(true)}>
@@ -18,7 +25,7 @@ const FormModal = () => {
             to combine both of your playlist and give a a playlist with your
             most listened songs!
           </p>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <p>
               <label htmlFor="username">
                 {/**
@@ -29,9 +36,11 @@ const FormModal = () => {
                   type="text"
                   name="username"
                   id="username"
+                  ref={register({ required: true })}
 
                   // placeholder="Spotify Username"
                 />
+                <p className="error">{errors.username && "Username Require"}</p>
               </label>
             </p>
             <p>
@@ -44,6 +53,7 @@ const FormModal = () => {
                   type="text"
                   name="username2"
                   id="username2"
+                  ref={register}
                   // placeholder="Spotify Username 2 (Optional)"
                 />
               </label>
