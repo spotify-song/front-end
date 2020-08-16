@@ -1,0 +1,28 @@
+.Footer {
+  background: #222;
+  //   background: rgb(39, 38, 38);
+
+  .footer-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    color: #f4f4f4;
+
+    .icons {
+      a {
+        color: #f4f4f4;
+        font-size: 1.3rem;
+      }
+    }
+
+    p {
+      font-weight: 300;
+      span {
+        font-weight: 300;
+      }
+    }
+  }
+}
