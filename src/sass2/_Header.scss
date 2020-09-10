@@ -68,22 +68,22 @@
     //  );
 
     // this one
-    background: linear-gradient(
-      90deg,
-      rgb(0, 0, 3) 0%,
-      rgb(2, 17, 56) 0%,
-      rgb(3, 4, 66) 26%,
-      rgba(3, 8, 54, 0) 350%
-    );
+    //  background: linear-gradient(
+    //    90deg,
+    //    rgb(0, 0, 3) 0%,
+    //    rgb(2, 17, 56) 0%,
+    //    rgb(3, 4, 66) 26%,
+    //    rgba(3, 8, 54, 0) 350%
+    //  );
 
     // this one
-    background: linear-gradient(
-      90deg,
-      rgb(0, 0, 3) 0%,
-      rgb(4, 16, 44) 0%,
-      rgb(5, 12, 54) 26%,
-      rgba(3, 8, 54, 0.1) 350%
-    );
+    //  background: linear-gradient(
+    //    90deg,
+    //    rgb(0, 0, 3) 0%,
+    //    rgb(4, 16, 44) 0%,
+    //    rgb(5, 12, 54) 26%,
+    //    rgba(3, 8, 54, 0.1) 350%
+    //  );
   }
   header {
     width: 1300px;
@@ -118,6 +118,7 @@
       outline: none;
       cursor: pointer;
       transition: background 0.4s ease;
+      border-radius: 4px;
 
       &:hover {
         background: rgb(44, 43, 43);
