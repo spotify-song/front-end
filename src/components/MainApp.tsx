@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import MarketingHomePage from "./MarketingPage/MarketingHomePage";
 import UsernamesForm from "./MarketingPage/UsernamesForm";
 
-const MainApp2 = () => {
+const MainApp = () => {
   return (
     <div>
       <Route exact path="/">
@@ -16,4 +16,4 @@ const MainApp2 = () => {
     </div>
   );
 };
-export default MainApp2;
+export default MainApp;

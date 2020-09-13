@@ -10,7 +10,11 @@ const Footer = () => {
           <span>suggester</span> all rights reserved.
         </p>
         <nav className="icons">
-          <a href="https://github.com/" target="_blank">
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaGithubSquare />
           </a>
         </nav>
