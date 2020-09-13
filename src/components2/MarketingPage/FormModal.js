@@ -13,32 +13,56 @@ const FormModal = () => {
   const [counter, setCounter] = useState(0);
   const token = "abc";
   const [clickedLink, setClickedLink] = useState(false);
+  const [one, setOne] = useState(false);
 
-  useEffect(() => {
-    //  console.log("running ");
-    function getUserTwo() {
-      return axios
-        .get("http://localhost:5000/usertwo/getuser")
-        .then((res) => {
-          console.log("here is the value ", res.data);
-          setClickedLink(false);
-          setCounter(0);
-          setServer(res.data);
-          console.log("we got the value!!");
-        })
-        .catch((err) => {
-          console.log("there is an error ", err);
-        });
-    }
-    if (clickedLink) {
-      setTimeout(() => {
-        setCounter(counter + 1);
-        console.log("count here ", counter);
-        console.log("calling server");
-        getUserTwo();
-      }, 4000);
-    }
-  }, [counter, clickedLink]);
+  //   useEffect(() => {
+  //     //  console.log("running ");
+  //     function getUserTwo() {
+  //       return axios
+  //         .get("http://localhost:5000/usertwo/getuser")
+  //         .then((res) => {
+  //           console.log("here is the value ", res.data);
+  //           setClickedLink(false);
+  //           setCounter(0);
+  //           setServer(res.data);
+  //           console.log("we got the value!!");
+  //         })
+  //         .catch((err) => {
+  //           console.log("there is an error ", err);
+  //         });
+  //     }
+  //     if (clickedLink) {
+  //       setTimeout(() => {
+  //         setCounter(counter + 1);
+  //         console.log("count here ", counter);
+  //         console.log("calling server");
+  //         getUserTwo();
+  //       }, 4000);
+  //     }
+  //   }, [counter, clickedLink]);
+
+  function getUserTwo() {
+    return axios
+      .get("http://localhost:5000/usertwo/getuser")
+      .then((res) => {
+        console.log("here is the value ", res.data);
+        setClickedLink(false);
+        setCounter(0);
+        setServer(res.data);
+        console.log("we got the value!!");
+      })
+      .catch((err) => {
+        console.log("there is an error ", err.response);
+      });
+  }
+  if (clickedLink) {
+    setTimeout(() => {
+      // setCounter(counter + 1);
+      // console.log("count here ", counter);
+      console.log("calling server");
+      getUserTwo();
+    }, 4000);
+  }
 
   console.log("whats clicked ", clickedLink);
 
@@ -58,6 +82,7 @@ const FormModal = () => {
     const url = `http://localhost:3002/users/${token}`;
     setUrl(url);
     setClickedLink(true);
+    setOne(true);
   };
   return (
     <div>
@@ -94,23 +119,28 @@ const FormModal = () => {
               </label>
             </p>
 
-            <p>
-              <label htmlFor="username2">
-                {/**
+            {one ? (
+              <p>{server && "We got your friends username."}</p>
+            ) : (
+              <p>
+                <label htmlFor="username2">
+                  {/**
                Spotify username 2:
             */}
-                Spotify username 2:
-                <input
-                  type="text"
-                  name="username2"
-                  id="username2"
-                  ref={register}
-                  value={server.username}
-                  onChange={clickedLink ? "" : handleValueTwo}
-                  // placeholder="Spotify Username 2 (Optional)"
-                />
-              </label>
-            </p>
+                  Spotify username 2:
+                  <input
+                    type="text"
+                    name="username2"
+                    id="username2"
+                    ref={register}
+                    value={server.username}
+                    onChange={handleValueTwo}
+                    // placeholder="Spotify Username 2 (Optional)"
+                  />
+                </label>
+              </p>
+            )}
+
             <p className="share-link">
               Don't have a second user name? copy a link and send it to one of
               your friends. <span onClick={generateLink}>Click here</span>
