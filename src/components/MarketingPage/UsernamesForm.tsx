@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "react-responsive-modal/styles.css";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+interface Inputs {
+  username: string;
+}
 const FormModal = () => {
-  const { register, handleSubmit, reset, errors } = useForm();
+  const { register, handleSubmit, reset, errors } = useForm<Inputs>();
   const { token } = useParams();
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: Inputs) => {
     let newVal = { token, ...values };
     //  reset();
     console.log("what are the values now?? ", newVal);
@@ -16,6 +19,7 @@ const FormModal = () => {
       .post("http://localhost:5000/usertwo", newVal)
       .then((res) => {
         console.log("the response ", res.data);
+        reset();
       })
       .catch((err) => console.log("error ", err));
   };

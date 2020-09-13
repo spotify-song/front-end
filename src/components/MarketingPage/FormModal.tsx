@@ -4,9 +4,13 @@ import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
+interface Input {
+  username: string;
+}
+
 const FormModal = () => {
   const [open, setOpen] = React.useState(false);
-  const { register, handleSubmit, reset, errors } = useForm();
+  const { register, handleSubmit, reset, errors } = useForm<Input>();
   const [url, setUrl] = useState("");
   const [valueTwo, setValueTwo] = useState("");
   const [server, setServer] = useState("");
@@ -15,31 +19,32 @@ const FormModal = () => {
   const [clickedLink, setClickedLink] = useState(false);
   const [one, setOne] = useState(false);
 
-  //   useEffect(() => {
-  //     //  console.log("running ");
-  //     function getUserTwo() {
-  //       return axios
-  //         .get("http://localhost:5000/usertwo/getuser")
-  //         .then((res) => {
-  //           console.log("here is the value ", res.data);
-  //           setClickedLink(false);
-  //           setCounter(0);
-  //           setServer(res.data);
-  //           console.log("we got the value!!");
-  //         })
-  //         .catch((err) => {
-  //           console.log("there is an error ", err);
-  //         });
-  //     }
-  //     if (clickedLink) {
-  //       setTimeout(() => {
-  //         setCounter(counter + 1);
-  //         console.log("count here ", counter);
-  //         console.log("calling server");
-  //         getUserTwo();
-  //       }, 4000);
-  //     }
-  //   }, [counter, clickedLink]);
+  useEffect(() => {
+    //  console.log("running ");
+    function getUserTwo() {
+      return axios
+        .get("http://localhost:5000/usertwo/getuser")
+        .then((res) => {
+          console.log("here is the value ", res.data);
+          setClickedLink(false);
+          setCounter(0);
+          setServer(res.data);
+          reset();
+          console.log("we got the value!!");
+        })
+        .catch((err) => {
+          console.log("there is an error ", err);
+        });
+    }
+    if (clickedLink) {
+      setTimeout(() => {
+        setCounter(counter + 1);
+        console.log("count here ", counter);
+        console.log("calling server");
+        getUserTwo();
+      }, 4000);
+    }
+  }, [counter, clickedLink]);
 
   function getUserTwo() {
     return axios
@@ -66,14 +71,16 @@ const FormModal = () => {
 
   console.log("whats clicked ", clickedLink);
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: Input) => {
     setOpen(false);
     //  reset();
-    let obj = { ...values, username2: server.username };
+    let obj = { ...values, username2: server };
     console.log("what is th actual value ", obj);
   };
 
-  const handleValueTwo = (e) => {
+  const handleValueTwo = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setValueTwo(e.target.value);
     console.log("what is the value ", e.target.value);
   };
@@ -133,7 +140,7 @@ const FormModal = () => {
                     name="username2"
                     id="username2"
                     ref={register}
-                    value={server.username}
+                    value={server}
                     onChange={handleValueTwo}
                     // placeholder="Spotify Username 2 (Optional)"
                   />

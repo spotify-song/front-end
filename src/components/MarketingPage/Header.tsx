@@ -1,14 +1,14 @@
 import React from "react";
 import FormModal from "./FormModal";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 const Header = () => {
-  const history = useHistory();
+  //   const history = useHistory();
 
-  const redirectTo = () => {
-    const token = "abc";
-    history.push(`/users/${token}`);
-  };
+  //   const redirectTo = () => {
+  //     const token = "abc";
+  //     history.push(`/users/${token}`);
+  //   };
   return (
     <div className="Header">
       <header>
