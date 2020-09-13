@@ -21,12 +21,10 @@ const FormModal = () => {
   };
 
   return (
-    <div className="FormModal">
-      <h2>Enter Spotify Usernames</h2>
+    <div className="SecondUser">
+      <h2>Enter Spotify Username</h2>
       <p className="form-description">
-        You can either enter only your username or enter a friend username to
-        combine both of your playlist and give a a playlist with your most
-        listened songs!
+        One of your friends have requested your Spotify Username.
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <p>
