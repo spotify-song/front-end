@@ -68,6 +68,11 @@
       // display: none;
     }
 
+    .successfull-mg {
+      color: green;
+      text-transform: uppercase;
+    }
+
     .share-link {
       // width: 450px;
       font-size: 0.9rem;
@@ -79,6 +84,10 @@
         margin-left: 0.5rem;
         color: #04f;
       }
+    }
+
+    .url-link {
+      color: grey;
     }
     button {
       border: none;

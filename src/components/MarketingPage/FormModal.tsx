@@ -1,92 +1,75 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 interface Input {
   username: string;
 }
 
+interface UserName {
+  token?: string;
+  username?: string;
+}
+
 const FormModal = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const { register, handleSubmit, reset, errors } = useForm<Input>();
   const [url, setUrl] = useState("");
   const [valueTwo, setValueTwo] = useState("");
-  const [server, setServer] = useState("");
-  const [counter, setCounter] = useState(0);
-  const token = "abc";
+  const [server, setServer] = useState<UserName | null>(null);
   const [clickedLink, setClickedLink] = useState(false);
   const [one, setOne] = useState(false);
-
-  useEffect(() => {
-    //  console.log("running ");
-    function getUserTwo() {
-      return axios
-        .get("http://localhost:5000/usertwo/getuser")
-        .then((res) => {
-          console.log("here is the value ", res.data);
-          setClickedLink(false);
-          setCounter(0);
-          setServer(res.data);
-          reset();
-          console.log("we got the value!!");
-        })
-        .catch((err) => {
-          console.log("there is an error ", err);
-        });
-    }
-    if (clickedLink) {
-      setTimeout(() => {
-        setCounter(counter + 1);
-        console.log("count here ", counter);
-        console.log("calling server");
-        getUserTwo();
-      }, 4000);
-    }
-  }, [counter, clickedLink]);
+  const token = uuidv4();
 
   function getUserTwo() {
     return axios
-      .get("http://localhost:5000/usertwo/getuser")
+      .get(`${process.env.REACT_APP_API_SERVER_URL}/usertwo/getuser`)
       .then((res) => {
-        console.log("here is the value ", res.data);
         setClickedLink(false);
-        setCounter(0);
         setServer(res.data);
-        console.log("we got the value!!");
       })
       .catch((err) => {
         console.log("there is an error ", err.response);
       });
   }
+
   if (clickedLink) {
     setTimeout(() => {
-      // setCounter(counter + 1);
-      // console.log("count here ", counter);
-      console.log("calling server");
       getUserTwo();
     }, 4000);
   }
 
-  console.log("whats clicked ", clickedLink);
-
   const onSubmit = (values: Input) => {
     setOpen(false);
-    //  reset();
-    let obj = { ...values, username2: server };
-    console.log("what is th actual value ", obj);
+    setValueTwo("");
+    let user = server?.username;
+    let obj = { ...values, username2: user || valueTwo };
+    setOne(false);
+    setUrl("");
+    setServer(null);
+    setClickedLink(false);
+    reset();
+    axios
+      .get(
+        `${process.env.REACT_APP_API_DS_URL}/users/{user_id_1,user_id_2}?user_id_1=${obj.username}&user_id_2=${obj.username2}`
+      )
+      .then((res) => {
+        console.log("response", res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const handleValueTwo = (e: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
+  const handleValueTwo = (e: { target: { value: any } }) => {
     setValueTwo(e.target.value);
-    console.log("what is the value ", e.target.value);
   };
 
   const generateLink = () => {
-    const url = `http://localhost:3002/users/${token}`;
+    const url = `${process.env.REACT_APP_API_URL}/users/${token}`;
     setUrl(url);
     setClickedLink(true);
     setOne(true);
@@ -127,7 +110,9 @@ const FormModal = () => {
             </p>
 
             {one ? (
-              <p>{server && "We got your friends username."}</p>
+              <p className="successfull-mg">
+                {server && "We got your friends username."}
+              </p>
             ) : (
               <p>
                 <label htmlFor="username2">
@@ -140,19 +125,26 @@ const FormModal = () => {
                     name="username2"
                     id="username2"
                     ref={register}
-                    value={server}
+                    value={server?.username || valueTwo}
                     onChange={handleValueTwo}
-                    // placeholder="Spotify Username 2 (Optional)"
                   />
                 </label>
               </p>
             )}
 
-            <p className="share-link">
-              Don't have a second user name? copy a link and send it to one of
-              your friends. <span onClick={generateLink}>Click here</span>
-            </p>
-            {url ? <p>{url}</p> : ""}
+            {!server ? (
+              <p className="share-link">
+                Don't have a second user name? copy a link and send it to one of
+                your friends.{" "}
+                <span aria-disabled onClick={generateLink}>
+                  Click here
+                </span>
+              </p>
+            ) : (
+              ""
+            )}
+
+            {url ? <p className="url-link">{url}</p> : ""}
             <button type="submit">Submit</button>
           </form>
         </div>
