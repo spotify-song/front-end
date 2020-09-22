@@ -19,6 +19,7 @@
     "react-responsive-modal": "^5.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "sass": "^1.26.11",
     "typescript": "~3.7.2",
     "uuid": "^8.3.0"
   },
