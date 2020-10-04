@@ -4,6 +4,11 @@ import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import io from "socket.io-client";
+import { useEffect } from "react";
+
+// const socket = io(`${process.env.REACT_APP_API_SERVER_URL}`);
+const socket = io(`http://localhost:5000/`);
 
 interface Input {
   username: string;
@@ -19,38 +24,25 @@ const FormModal = () => {
   const { register, handleSubmit, reset, errors } = useForm<Input>();
   const [url, setUrl] = useState("");
   const [valueTwo, setValueTwo] = useState("");
-  const [server, setServer] = useState<UserName | null>(null);
-  const [clickedLink, setClickedLink] = useState(false);
   const [one, setOne] = useState(false);
-  const token = uuidv4();
+  const [token, setToken] = useState(uuidv4());
+  const [userTwo, setUserTwo] = useState<UserName | null>(null);
 
-  function getUserTwo() {
-    return axios
-      .get(`${process.env.REACT_APP_API_SERVER_URL}/usertwo/getuser`)
-      .then((res) => {
-        setClickedLink(false);
-        setServer(res.data);
-      })
-      .catch((err) => {
-        console.log("there is an error ", err.response);
-      });
-  }
-
-  if (clickedLink) {
-    setTimeout(() => {
-      getUserTwo();
-    }, 4000);
-  }
+  useEffect(() => {
+    socket.on("send_to_friend", (user: any) => {
+      if (user.token === token) {
+        setUserTwo(user);
+      }
+    });
+  }, []);
 
   const onSubmit = (values: Input) => {
     setOpen(false);
     setValueTwo("");
-    let user = server?.username;
+    let user = userTwo?.username;
     let obj = { ...values, username2: user || valueTwo };
     setOne(false);
     setUrl("");
-    setServer(null);
-    setClickedLink(false);
     reset();
     axios
       .get(
@@ -69,9 +61,8 @@ const FormModal = () => {
   };
 
   const generateLink = () => {
-    const url = `${process.env.REACT_APP_API_URL}/users/${token}`;
+    const url = `${process.env.REACT_APP_API_SERVER_URL}/users/${token}`;
     setUrl(url);
-    setClickedLink(true);
     setOne(true);
   };
   return (
@@ -111,7 +102,7 @@ const FormModal = () => {
 
             {one ? (
               <p className="successfull-mg">
-                {server && "We got your friends username."}
+                {userTwo && "We got your friends username."}
               </p>
             ) : (
               <p>
@@ -125,14 +116,14 @@ const FormModal = () => {
                     name="username2"
                     id="username2"
                     ref={register}
-                    value={server?.username || valueTwo}
+                    value={userTwo?.username || valueTwo}
                     onChange={handleValueTwo}
                   />
                 </label>
               </p>
             )}
 
-            {!server ? (
+            {!userTwo ? (
               <p className="share-link">
                 Don't have a second user name? copy a link and send it to one of
                 your friends.{" "}
