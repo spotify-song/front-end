@@ -32,6 +32,7 @@ const FormModal = () => {
     socket.on("send_to_friend", (user: any) => {
       if (user.token === token) {
         setUserTwo(user);
+        setUrl("");
       }
     });
   }, []);
@@ -44,16 +45,16 @@ const FormModal = () => {
     setOne(false);
     setUrl("");
     reset();
-    axios
-      .get(
-        `${process.env.REACT_APP_API_DS_URL}/users/{user_id_1,user_id_2}?user_id_1=${obj.username}&user_id_2=${obj.username2}`
-      )
-      .then((res) => {
-        console.log("response", res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    //  axios
+    //    .get(
+    //      `${process.env.REACT_APP_API_DS_URL}/users/{user_id_1,user_id_2}?user_id_1=${obj.username}&user_id_2=${obj.username2}`
+    //    )
+    //    .then((res) => {
+    //      console.log("response", res);
+    //    })
+    //    .catch((err) => {
+    //      console.log(err);
+    //    });
   };
 
   const handleValueTwo = (e: { target: { value: any } }) => {
@@ -61,7 +62,7 @@ const FormModal = () => {
   };
 
   const generateLink = () => {
-    const url = `${process.env.REACT_APP_API_SERVER_URL}/users/${token}`;
+    const url = `${process.env.REACT_APP_API_URL}/users/${token}`;
     setUrl(url);
     setOne(true);
   };
@@ -123,7 +124,7 @@ const FormModal = () => {
               </p>
             )}
 
-            {!userTwo ? (
+            {!one ? (
               <p className="share-link">
                 Don't have a second user name? copy a link and send it to one of
                 your friends.{" "}

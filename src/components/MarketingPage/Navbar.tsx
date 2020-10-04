@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className="Navbar">
       <p>
         <NavLink exact to="/">
-          Song<span>.suggester</span>
+          Music<span> Matches</span>
         </NavLink>
       </p>
       <nav>
@@ -17,12 +17,12 @@ const Navbar = () => {
           about us
         </NavLink>
 
-        <NavLink exact to="/login" activeClassName="active">
+        {/* <NavLink exact to="/login" activeClassName="active">
           login
         </NavLink>
         <NavLink exact to="/signup" activeClassName="active">
           signup
-        </NavLink>
+        </NavLink> */}
       </nav>
     </div>
   );
