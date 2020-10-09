@@ -4,8 +4,8 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 
-// const socket = io(`${process.env.REACT_APP_API_SERVER_URL}`);
-const socket = io(`http://localhost:5000/`);
+const socket = io(`${process.env.REACT_APP_API_SERVER_URL}`);
+// const socket = io(`http://localhost:5000/`);
 
 interface Inputs {
   username: string;
