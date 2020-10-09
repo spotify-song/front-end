@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+// import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import io from "socket.io-client";
 import { useEffect } from "react";
@@ -35,7 +35,7 @@ const FormModal = () => {
         setUrl("");
       }
     });
-  }, []);
+  }, [token]);
 
   const onSubmit = (values: Input) => {
     setOpen(false);
