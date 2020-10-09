@@ -7,8 +7,8 @@ import { v4 as uuidv4 } from "uuid";
 import io from "socket.io-client";
 import { useEffect } from "react";
 
-// const socket = io(`${process.env.REACT_APP_API_SERVER_URL}`);
-const socket = io(`http://localhost:5000/`);
+const socket = io(`${process.env.REACT_APP_API_SERVER_URL}`);
+// const socket = io(`http://localhost:5000/`);
 
 interface Input {
   username: string;
