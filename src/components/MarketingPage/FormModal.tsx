@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { useForm } from "react-hook-form";
-// import axios from "axios";
+import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import io from "socket.io-client";
 import { useEffect } from "react";
 
-const socket = io(`${process.env.REACT_APP_API_SERVER_URL}`);
-// const socket = io(`http://localhost:5000/`);
+// const socket = io(`${process.env.REACT_APP_API_SERVER_URL}`);
+const socket = io(`http://localhost:5001/`);
 
 interface Input {
   username: string;
@@ -28,6 +28,10 @@ const FormModal = () => {
   const [token, setToken] = useState(uuidv4());
   const [userTwo, setUserTwo] = useState<UserName | null>(null);
 
+  //   useEffect(() => {
+
+  //   }, []);
+
   useEffect(() => {
     socket.on("send_to_friend", (user: any) => {
       if (user.token === token) {
@@ -36,6 +40,17 @@ const FormModal = () => {
       }
     });
   }, [token]);
+
+  //   const redirect = () => {
+  //     axios
+  //       .get("http://localhost5001/test/login")
+  //       .then((res) => {
+  //         console.log("what is the resposne", res.data);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   };
 
   const onSubmit = (values: Input) => {
     setOpen(false);
