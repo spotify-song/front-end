@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import { useForm } from "react-hook-form";
-import axios from "axios";
+// import { useForm } from "react-hook-form";
+// import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import io from "socket.io-client";
 import { useEffect } from "react";
+import GetSpotifyAccess from "./GetSpotifyAccess";
 
 // const socket = io(`${process.env.REACT_APP_API_SERVER_URL}`);
 const socket = io(`http://localhost:5001/`);
@@ -21,7 +22,7 @@ interface UserName {
 
 const FormModal = () => {
   const [open, setOpen] = useState(false);
-  const { register, handleSubmit, reset, errors } = useForm<Input>();
+  //   const { register, handleSubmit, reset, errors } = useForm<Input>();
   const [url, setUrl] = useState("");
   const [valueTwo, setValueTwo] = useState("");
   const [one, setOne] = useState(false);
@@ -59,7 +60,7 @@ const FormModal = () => {
     let obj = { ...values, username2: user || valueTwo };
     setOne(false);
     setUrl("");
-    reset();
+    //  reset();
     //  axios
     //    .get(
     //      `${process.env.REACT_APP_API_DS_URL}/users/{user_id_1,user_id_2}?user_id_1=${obj.username}&user_id_2=${obj.username2}`
@@ -95,12 +96,9 @@ const FormModal = () => {
             to combine both of your playlist and give a a playlist with your
             most listened songs!
           </p>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          {/* <form onSubmit={handleSubmit(onSubmit)}>
             <p>
               <label htmlFor="username">
-                {/**
-               Spotify username:
-            */}
                 Spotify username:
                 <input
                   type="text"
@@ -123,9 +121,6 @@ const FormModal = () => {
             ) : (
               <p>
                 <label htmlFor="username2">
-                  {/**
-               Spotify username 2:
-            */}
                   Spotify username 2:
                   <input
                     type="text"
@@ -153,7 +148,21 @@ const FormModal = () => {
 
             {url ? <p className="url-link">{url}</p> : ""}
             <button type="submit">Submit</button>
-          </form>
+          </form> */}
+          <div className="url-link">
+            {!one ? (
+              <p className="share-link">
+                compare music with friends
+                <span aria-disabled onClick={generateLink}>
+                  Copy link
+                </span>
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
+
+          <GetSpotifyAccess />
         </div>
       </Modal>
     </div>
