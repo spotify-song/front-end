@@ -1,0 +1,44 @@
+.Footer {
+  height: 40vh;
+  color: white;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .inner-footer {
+    width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+
+    h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      margin-bottom: 3rem;
+
+      &:first-child {
+        margin-bottom: 0;
+      }
+    }
+
+    button {
+      font-size: 1.5rem;
+      padding: 0.8rem 2rem;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  }
+}
+.feedback {
+  background: #6569d6;
+  background: #5358d1;
+  padding: 0.6rem 0 0.5rem 10rem;
+  font-size: 0.9rem;
+  color: white;
+
+  a {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

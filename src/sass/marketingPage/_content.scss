@@ -1,0 +1,32 @@
+.Content {
+  height: 47vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../imgs/Middle.png");
+  //   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .Content-inner {
+    width: 1300px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      margin-bottom: 3rem;
+      color: white;
+
+      &:first-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .imgs-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
