@@ -27,7 +27,7 @@ const MainApp = () => {
       <Route exact path="/users/:token">
         <UsernamesForm />
       </Route>
-      <Route exact path="/account">
+      <Route exact path="/account/:access_token">
         <UserAccount getHashParams={getHashParams} />
       </Route>
       {/* <GetSpotifyAccess /> */}
