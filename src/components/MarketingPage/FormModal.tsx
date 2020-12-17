@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 // import { useForm } from "react-hook-form";
-// import axios from "axios";
+import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import io from "socket.io-client";
 import { useEffect } from "react";
 import GetSpotifyAccess from "./GetSpotifyAccess";
+import { Redirect } from "react-router-dom";
 
 // const socket = io(`${process.env.REACT_APP_API_SERVER_URL}`);
 const socket = io(`http://localhost:5001/`);
@@ -72,6 +73,10 @@ const FormModal = () => {
     //      console.log(err);
     //    });
   };
+
+  const testing = () => {
+     window.location.href = `http://localhost:5001/test/login`
+  }
 
   const handleValueTwo = (e: { target: { value: any } }) => {
     setValueTwo(e.target.value);
@@ -165,6 +170,8 @@ const FormModal = () => {
           <GetSpotifyAccess />
         </div>
       </Modal>
+
+      <button onClick={testing}>this one</button>
     </div>
   );
 };
