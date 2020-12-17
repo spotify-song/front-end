@@ -1,0 +1,32 @@
+.Navbar {
+  max-width: 1400px;
+  //   border: 1px solid red;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 1.3rem;
+  height: 7vh;
+  padding: 0 1rem;
+
+  a {
+    color: white;
+
+    &:first-child {
+      font-weight: bolder;
+    }
+    &:last-child {
+      border: 1px solid white;
+      border-radius: 20px;
+      padding: 0.5rem 1.5rem;
+    }
+  }
+}

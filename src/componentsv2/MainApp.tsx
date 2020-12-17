@@ -1,10 +1,14 @@
 import React from 'react';
+import Header from './marketingPage/Header';
+import Navbar from './marketingPage/Navbar';
 
 
 const MainApp = () => {
    return(
-      <div><h3>hello
-         </h3></div>
+      <div>
+         <Navbar />
+         <Header />
+      </div>
    )
 }
 
