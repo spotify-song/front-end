@@ -1,5 +1,6 @@
 .Header {
-  height: 65vh;
+  height: 55vh;
+  //   height: 505px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +31,7 @@
     }
     button {
       font-size: 1.5rem;
-      padding: 1rem 2rem;
+      padding: 0.8rem 2rem;
       border-radius: 20px;
       cursor: pointer;
     }
